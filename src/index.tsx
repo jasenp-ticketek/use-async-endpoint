@@ -34,7 +34,7 @@ export function createAsyncEndpoint(baseURL: string) {
       errorInfo: undefined
     });
 
-    const [req, setReq] = React.useState<AxiosRequestConfig>();
+    const [req, setReq] = React.useState();
 
     React.useEffect(() => {
       let isCleanup = false;
