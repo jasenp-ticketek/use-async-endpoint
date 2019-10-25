@@ -1,4 +1,5 @@
-import { AxiosError } from "axios";
+import React from "react";
+import { AxiosError, Canceler } from "axios";
 interface IConfig {
     url: string;
     method: "get" | "post" | "put" | "delete";
@@ -14,5 +15,5 @@ interface IState {
     hasError: boolean;
     errorInfo?: AxiosError;
 }
-export declare function createAsyncEndpoint(baseURL: string): (config: IConfig) => (import("axios").Canceler | IState)[];
+export declare function createAsyncEndpoint(baseURL: string): (config: IConfig) => [IState, React.Dispatch<any>, Canceler];
 export {};

@@ -1,5 +1,5 @@
 import React from "react";
-import axios, { AxiosError, AxiosRequestConfig } from "axios";
+import axios, { AxiosError, AxiosRequestConfig, Canceler } from "axios";
 
 interface IConfig {
   url: string;
@@ -19,7 +19,7 @@ interface IState {
 }
 
 export function createAsyncEndpoint(baseURL: string) {
-  return function(config: IConfig) {
+  return function(config: IConfig): [IState, React.Dispatch<any>, Canceler] {
     const reqConfig = React.useRef(config);
     const sourceRef = React.useRef(axios.CancelToken.source());
 
