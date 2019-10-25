@@ -7,8 +7,8 @@ interface IConfig {
   data?: any;
 }
 
-interface IState<T> {
-  data: T | undefined;
+interface IState {
+  data: any;
   headers: any;
   isComplete: boolean;
   isPending: boolean;
@@ -18,12 +18,12 @@ interface IState<T> {
   errorInfo?: AxiosError;
 }
 
-export function createAsyncEndpoint<T>(baseURL: string) {
+export function createAsyncEndpoint(baseURL: string) {
   return function(config: IConfig) {
     const reqConfig = React.useRef(config);
     const sourceRef = React.useRef(axios.CancelToken.source());
 
-    const [res, setRes] = React.useState<IState<T>>({
+    const [res, setRes] = React.useState<IState>({
       data: undefined,
       headers: undefined,
       isComplete: false,

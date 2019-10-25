@@ -5,8 +5,8 @@ interface IConfig {
     method: "get" | "post" | "put" | "delete";
     data?: any;
 }
-interface IState<T> {
-    data: T | undefined;
+interface IState {
+    data: any;
     headers: any;
     isComplete: boolean;
     isPending: boolean;
@@ -15,5 +15,5 @@ interface IState<T> {
     hasError: boolean;
     errorInfo?: AxiosError;
 }
-export declare function createAsyncEndpoint<T>(baseURL: string): (config: IConfig) => (import("axios").Canceler | IState<T> | React.Dispatch<React.SetStateAction<AxiosRequestConfig | undefined>>)[];
+export declare function createAsyncEndpoint(baseURL: string): (config: IConfig) => (import("axios").Canceler | IState | React.Dispatch<React.SetStateAction<AxiosRequestConfig | undefined>>)[];
 export {};
